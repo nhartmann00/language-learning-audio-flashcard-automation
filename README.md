@@ -17,7 +17,7 @@ The workflow is simple:
 
 ## The Problem
 
-Here is where the tool comes in. As most language learning textbooks, the French book I'm using (Assimil French for Beginners) comes with MP3 files for all the dialogue in the book, to listen alongside reading. These audio files contain natural and authentic and context-appropriate native level pronunciation and intonation; much better quality than any Text-to-Speech tools. I want to add this audio files to my Anki deck, but chopping files manuallt is a long and tedious process given the large amount of cards there are. It will make the actual language learning very inefficient.
+Here is where the tool comes in. As most language learning textbooks, the French book I'm using (Assimil French for Beginners) comes with MP3 files for all the dialogue in the book, to listen alongside reading. These audio files contain natural, authentic and context-appropriate native level pronunciation and intonation; much better quality than any Text-to-Speech tools. I want to add this audio files to my Anki deck, but chopping files manuallt is a long and tedious process given the large amount of cards there are. It will make the actual language learning very inefficient.
 
 ## The Solution
 
