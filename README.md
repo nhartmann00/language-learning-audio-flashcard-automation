@@ -37,6 +37,7 @@ This tool automates the process of:
 ## Tech Stack
 
 - **Python** - Main programming language. Ecosystem for audio processing and ML tools.
+- **Whisper** - Automatic speech recognition from OpenAI. Will provide transcripts for each unprocessed audio file automatically. 
 - **Montreal Forced Aligner** - Audio-text alignment. Industry standard with support for French and many other languages.
 - **pydub** - Audio processing and segmentation. Pythonic audio manipulation (built on ffmpeg).
 - **genanki** - Anki deck generation.
