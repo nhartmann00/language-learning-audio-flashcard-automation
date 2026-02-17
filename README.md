@@ -6,7 +6,7 @@ Automated pipeline to extract specific words and phrases from textbook dialogue 
 
 As a current temporary resident of Canada, learning French has become a vital tool in order to get closer to the Permanent Residence point threshold. Many immigrants such as myself are finding themselves in a tight spot trying to get to the cutoff.
 
-As such, I have been looking into language learning and what effective methods are out there. The motivation for this project came from a language learning workflow approach highlighted by youtuber languagejones in the following [video](https://www.youtube.com/watch?v=QVpu66njzdE).
+As such, I have been looking into language learning and what effective methods are out there. The motivation for this project came from a language learning workflow approach highlighted by youtuber **languagejones** in the following [video](https://www.youtube.com/watch?v=QVpu66njzdE).
 
 The workflow is simple:
 - Get a hold of a textbook for your language at the appropriate level, and start reading it. Go through the dialogues, exercises and everything that it offers.
