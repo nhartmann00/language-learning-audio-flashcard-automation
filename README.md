@@ -11,7 +11,7 @@ As such, I have been looking into language learning and what effective methods a
 The workflow is simple:
 - Get a hold of a textbook for your language at the appropriate level, and start reading it. Go through the dialogues, exercises and everything that it offers.
 - As you go through the textbook, write down any words or (small) phrases that you aren't yet familiar with and intend to memorize.
-- This collection of words and phrases will be used to create your Anki deck. To do it more efficiently, create an Excel spreadsheet to export this as a CSV into Anki with the word and its translation.
+- This collection of words and phrases will be used to create your Anki deck. To do it more efficiently, create an Excel spreadsheet to export as a CSV into Anki with the word and its translation.
 - Keep going through the textbook and use Anki to learn and memorize all the content of the book.
 - languagejones recommends adding audio and/or images to the cards to learn quicker.
 
