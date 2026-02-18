@@ -146,18 +146,18 @@ item []:
             text = "" 
         intervals [34]:
             xmin = 18.360001 
-            xmax = 18.790001 
+            xmax = 18.780001 
             text = "clóé" 
         intervals [35]:
-            xmin = 18.790001 
+            xmin = 18.780001 
             xmax = 19.52 
             text = "" 
         intervals [36]:
             xmin = 19.52 
-            xmax = 20.08 
+            xmax = 20.09 
             text = "bonjour" 
         intervals [37]:
-            xmin = 20.08 
+            xmin = 20.09 
             xmax = 20.75 
             text = "clóé" 
         intervals [38]:
@@ -310,10 +310,10 @@ item []:
             text = "" 
         intervals [75]:
             xmin = 50.82 
-            xmax = 51.25 
+            xmax = 51.240002 
             text = "clóé" 
         intervals [76]:
-            xmin = 51.25 
+            xmin = 51.240002 
             xmax = 55.279999 
             text = "" 
         intervals [77]:
@@ -350,10 +350,10 @@ item []:
             text = "exercice" 
         intervals [85]:
             xmin = 65.580002 
-            xmax = 66.730003 
+            xmax = 66.82 
             text = "" 
         intervals [86]:
-            xmin = 66.730003 
+            xmin = 66.82 
             xmax = 67.489998 
             text = "traduisez" 
         intervals [87]:
@@ -644,10 +644,10 @@ item []:
             text = "b" 
         intervals [42]:
             xmin = 11.19 
-            xmax = 11.33 
+            xmax = 11.32 
             text = "j" 
         intervals [43]:
-            xmin = 11.33 
+            xmin = 11.32 
             xmax = 11.59 
             text = "ɛ̃" 
         intervals [44]:
@@ -804,10 +804,10 @@ item []:
             text = "" 
         intervals [82]:
             xmin = 18.360001 
-            xmax = 18.790001 
+            xmax = 18.780001 
             text = "spn" 
         intervals [83]:
-            xmin = 18.790001 
+            xmin = 18.780001 
             xmax = 19.52 
             text = "" 
         intervals [84]:
@@ -828,10 +828,10 @@ item []:
             text = "u" 
         intervals [88]:
             xmin = 20.040001 
-            xmax = 20.08 
+            xmax = 20.09 
             text = "ʁ" 
         intervals [89]:
-            xmin = 20.08 
+            xmin = 20.09 
             xmax = 20.75 
             text = "spn" 
         intervals [90]:
@@ -864,10 +864,10 @@ item []:
             text = "a" 
         intervals [97]:
             xmin = 22.34 
-            xmax = 22.4 
+            xmax = 22.41 
             text = "v" 
         intervals [98]:
-            xmin = 22.4 
+            xmin = 22.41 
             xmax = 22.719999 
             text = "a" 
         intervals [99]:
@@ -1196,10 +1196,10 @@ item []:
             text = "" 
         intervals [180]:
             xmin = 50.82 
-            xmax = 51.25 
+            xmax = 51.240002 
             text = "spn" 
         intervals [181]:
-            xmin = 51.25 
+            xmin = 51.240002 
             xmax = 55.279999 
             text = "" 
         intervals [182]:
@@ -1300,10 +1300,10 @@ item []:
             text = "s" 
         intervals [206]:
             xmin = 65.580002 
-            xmax = 66.730003 
+            xmax = 66.82 
             text = "" 
         intervals [207]:
-            xmin = 66.730003 
+            xmin = 66.82 
             xmax = 67.489998 
             text = "spn" 
         intervals [208]:
@@ -1492,10 +1492,10 @@ item []:
             text = "ʁ" 
         intervals [254]:
             xmin = 84.080002 
-            xmax = 84.18 
+            xmax = 84.169998 
             text = "e" 
         intervals [255]:
-            xmin = 84.18 
+            xmin = 84.169998 
             xmax = 84.239998 
             text = "z" 
         intervals [256]:
