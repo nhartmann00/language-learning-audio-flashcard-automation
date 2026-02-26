@@ -23,9 +23,14 @@ TEXTGRID_PATH = f"{MFA_OUTPUT_DIR}/{LESSON_FILE}.TextGrid"
 
 # Test phrases (update these based on what's actually in lesson 2)
 TEST_PHRASES = [
-    "bonjour",
-    "comment allez vous",
-    "merci"
+    "deux",
+    "s'il vous plaît",
+    "préfère",
+    "petit déjeuner",
+    "monsieur madame vous désirez",
+    "oui c'est ça",
+    "le déjeuner",
+    "deuxième"
 ]
 
 def main():

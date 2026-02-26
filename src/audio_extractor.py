@@ -138,23 +138,26 @@ if __name__ == "__main__":
     from src.textgrid_parser import parse_textgrid
     
     # Test extraction on L001
-    print("Testing audio extraction on L001-LESSON\n")
+    print("Testing audio extraction on L002-LESSON\n")
     
     # Parse TextGrid
-    textgrid_path = "data/mfa_output/L001-LESSON.TextGrid"
+    textgrid_path = "data/mfa_output/L002-LESSON.TextGrid"
     words = parse_textgrid(textgrid_path)
     
     # Test phrases
     test_phrases = [
-        "bonjour",
-        "comment allez vous",
-        "ça va très bien",
-        "merci",
-        "je vous"
+        "deux",
+        "s'il vous plaît",
+        "préfère",
+        "petit déjeuner",
+        "monsieur madame vous désirez",
+        "oui c'est ça",
+        "le déjeuner",
+        "deuxième"
     ]
     
     # Extract audio clips
-    audio_path = "data/processed_audio/L001-LESSON.wav"
+    audio_path = "data/processed_audio/L002-LESSON.wav"
     output_dir = "data/audio_clips"
     
     results = batch_extract_phrases(

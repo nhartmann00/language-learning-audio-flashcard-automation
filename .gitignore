@@ -6,6 +6,21 @@ __pycache__/
 # C extensions
 *.so
 
+# Data
+data/raw_audio/
+data/processed_audio/
+data/processed_audio_trimmed/
+data/mfa_corpus/
+data/mfa_output/
+data/transcripts/
+data/transcripts_clean/
+data/audio_clips/
+data/whisper_transcripts/
+data/transcripts_clean/
+temp_corpus/
+*.zip
+config.json
+
 # Distribution / packaging
 .Python
 build/
@@ -205,3 +220,5 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+"ASSIMIL French Anki.csv" 
+"ASSIMIL French Anki.csv" 

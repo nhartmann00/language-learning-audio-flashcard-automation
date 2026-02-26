@@ -1,39 +1,58 @@
 """
-Transcript cleaning utilities for Montreal Forced Aligner (MFA) preparation.
-Cleans Whisper transcripts to meet MFA input requirements.
+Transcript cleaning utilities for MFA alignment.
+Prepares Whisper transcripts by converting numbers to words and normalizing text.
 """
 
 import re
 import os
+from num2words import num2words
 
 
 def clean_transcript(text):
     """
     Clean a Whisper transcript for MFA alignment.
-    
-    MFA requirements:
-    - No punctuation (except apostrophes for French contractions)
-    - No numbers (convert to words or remove)
-    - Lowercase
-    - No extra whitespace
-    
-    Args:
-        text (str): Raw Whisper transcript text
-    
-    Returns:
-        str: Cleaned transcript ready for MFA
+    Converts numbers, ordinals, and times to French words.
     """
     # Lowercase
     text = text.lower()
     
-    # Replace hyphens with spaces (allez-vous → allez vous)
-    text = text.replace('-', ' ')
-
-    # Remove punctuation except apostrophes (needed for French: j'ai, c'est, etc.)
-    text = re.sub(r"[^\w\s']", "", text)
+    # Convert ordinals (e.g., "2e" → "deuxième")
+    def replace_ordinal(match):
+        num = int(match.group(1))
+        return num2words(num, lang='fr', to='ordinal')
     
-    # Remove numbers
-    text = re.sub(r"\d+", "", text)
+    text = re.sub(r'(\d+)(?:e|ème|eme|er|ère)', replace_ordinal, text)
+    
+    # Convert time notation (e.g., "8h" → "huit heures", "8h30" → "huit heures trente")
+    def replace_time(match):
+        hour = int(match.group(1))
+        minutes = match.group(2)
+        
+        hour_word = num2words(hour, lang='fr')
+        result = f"{hour_word} heure{'s' if hour > 1 else ''}"
+        
+        if minutes:
+            minute_num = int(minutes)
+            if minute_num > 0:
+                minute_word = num2words(minute_num, lang='fr')
+                result += f" {minute_word}"
+        
+        return result
+    
+    text = re.sub(r'(\d+)h(\d+)?', replace_time, text)
+    
+    # Convert any remaining standalone numbers (e.g., "2" → "deux")
+    def replace_number(match):
+        num = int(match.group(0))
+        return num2words(num, lang='fr')
+    
+    text = re.sub(r'\b\d+\b', replace_number, text)
+    
+    # Remove hyphens (splits compound numbers like "quarante-sept" → "quarante sept")
+    text = text.replace('-', ' ')
+    
+    # Remove punctuation except apostrophes
+    text = re.sub(r"[^\w\s']", "", text)
     
     # Remove extra whitespace
     text = re.sub(r"\s+", " ", text).strip()
@@ -43,28 +62,12 @@ def clean_transcript(text):
 
 def prepare_mfa_corpus(wav_dir, transcript_dir, corpus_dir):
     """
-    Prepare MFA corpus folder by pairing WAV files with cleaned transcripts.
-    
-    MFA expects:
-    corpus/
-    ├── L001-LESSON.wav
-    ├── L001-LESSON.txt
-    ├── L002-LESSON.wav
-    └── L002-LESSON.txt
-    
-    Args:
-        wav_dir (str): Directory containing WAV files
-        transcript_dir (str): Directory containing Whisper transcript .txt files
-        corpus_dir (str): Output directory for MFA corpus
+    Prepare MFA corpus by pairing WAV files with cleaned transcripts.
     """
     os.makedirs(corpus_dir, exist_ok=True)
     
     # Find all WAV files
     wav_files = [f for f in os.listdir(wav_dir) if f.endswith('.wav')]
-    
-    if not wav_files:
-        print(f"No WAV files found in {wav_dir}")
-        return
     
     print(f"Found {len(wav_files)} WAV files")
     
@@ -72,15 +75,14 @@ def prepare_mfa_corpus(wav_dir, transcript_dir, corpus_dir):
     skipped = 0
     
     for wav_file in wav_files:
-        base_name = os.path.splitext(wav_file)[0]
-        transcript_file = f"{base_name}.txt"
+        base_name = wav_file.replace('.wav', '')
         
-        wav_path = os.path.join(wav_dir, wav_file)
+        # Find matching transcript
+        transcript_file = f"{base_name}.txt"
         transcript_path = os.path.join(transcript_dir, transcript_file)
         
-        # Check transcript exists
         if not os.path.exists(transcript_path):
-            print(f"⚠ No transcript found for {wav_file} - skipping")
+            print(f"⚠ No transcript for {wav_file}")
             skipped += 1
             continue
         
@@ -91,12 +93,15 @@ def prepare_mfa_corpus(wav_dir, transcript_dir, corpus_dir):
         cleaned_text = clean_transcript(raw_text)
         
         # Copy WAV to corpus
+        wav_src = os.path.join(wav_dir, wav_file)
+        wav_dst = os.path.join(corpus_dir, wav_file)
+        
         import shutil
-        shutil.copy2(wav_path, os.path.join(corpus_dir, wav_file))
+        shutil.copy2(wav_src, wav_dst)
         
         # Save cleaned transcript to corpus
-        cleaned_path = os.path.join(corpus_dir, transcript_file)
-        with open(cleaned_path, 'w', encoding='utf-8') as f:
+        txt_dst = os.path.join(corpus_dir, f"{base_name}.txt")
+        with open(txt_dst, 'w', encoding='utf-8') as f:
             f.write(cleaned_text)
         
         print(f"✓ Prepared {base_name}")
@@ -107,19 +112,7 @@ def prepare_mfa_corpus(wav_dir, transcript_dir, corpus_dir):
 
 
 if __name__ == "__main__":
-    # Test cleaning on a single transcript
-    test_text = "première leçon comment allez-vous? bonjour Jean, comment allez-vous? bien et vous? ça va très bien, merci!"
-    
-    print("Original:")
-    print(test_text)
-    
-    print("\nCleaned:")
-    cleaned = clean_transcript(test_text)
-    print(cleaned)
-    
-    # Prepare MFA corpus
-    prepare_mfa_corpus(
-        wav_dir="data/processed_audio",
-        transcript_dir="data/transcripts",
-        corpus_dir="data/mfa_corpus"
-    )
+    # Test the cleaner
+    test_text = "2e leçon à 8h30. J'ai 47 ans. Exercice 1er."
+    print("Original:", test_text)
+    print("Cleaned:", clean_transcript(test_text))

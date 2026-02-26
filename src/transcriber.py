@@ -29,7 +29,8 @@ def transcribe_audio(audio_path, model_size="small", language="fr"):
         audio_path,
         language=language,
         verbose=True,  # Set to True to see progress
-        word_timestamps=True
+        word_timestamps=True,
+        condition_on_previous_text=False  # Prevent repetition hallucinations
     )
     
     print(f"✓ Transcription complete")
@@ -90,7 +91,7 @@ def batch_transcribe(audio_dir, output_dir, model_size="small", language="fr"):
         
         try:
             print(f"\n[{i}/{len(audio_files)}] Transcribing {audio_file}...")
-            result = model.transcribe(audio_path, language=language, verbose=False)
+            result = model.transcribe(audio_path, language=language, verbose=False, condition_on_previous_text=False)
             
             # Save transcript
             with open(transcript_path, 'w', encoding='utf-8') as f:
