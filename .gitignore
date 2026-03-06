@@ -225,3 +225,5 @@ __marimo__/
 "ASSIMIL French Anki.csv" 
 "ASSIMIL French Anki.csv" 
 ".claude/worktrees/" 
+"data/.superseded/" 
+".claude/" 
