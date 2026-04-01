@@ -74,30 +74,35 @@ class AnkiConnector:
         return self.invoke('addNote', note=note)
     
     def update_note_audio(self, note_id, audio_filename):
-        """Add audio to an existing note."""
-        # Convert to absolute path
+        """Add audio to an existing note without modifying field text.
+        
+        Uses AnkiConnect's storeMediaFile to save the audio, then updates
+        the note using the same audio attachment mechanism as add_note —
+        keeping the Front field text intact.
+        """
         audio_filename = os.path.abspath(audio_filename)
+        media_name = os.path.basename(audio_filename)
         
-        # Get current note
-        note_info = self.invoke('notesInfo', notes=[note_id])[0]
-        
-        # Add audio field
+        # Store the media file in Anki's collection
         self.invoke('storeMediaFile', 
-            filename=os.path.basename(audio_filename),
+            filename=media_name,
             path=audio_filename
         )
         
-        # Update note with audio reference
-        front_field = note_info['fields']['Front']['value']
-        audio_tag = f'[sound:{os.path.basename(audio_filename)}]'
+        # Get current note to check if audio is already attached
+        note_info = self.invoke('notesInfo', notes=[note_id])[0]
+        front_value = note_info['fields']['Front']['value']
         
-        # Only add if not already there
-        if audio_tag not in front_field:
-            updated_front = audio_tag + '<br>' + front_field
+        audio_tag = f'[sound:{media_name}]'
+        
+        # Only update if this audio isn't already on the card
+        if audio_tag not in front_value:
+            # Append sound tag after the existing text (not prepended)
+            # This keeps the visible text clean and the audio plays on card display
             self.invoke('updateNoteFields', note={
                 'id': note_id,
                 'fields': {
-                    'Front': updated_front
+                    'Front': front_value + audio_tag
                 }
             })
         
