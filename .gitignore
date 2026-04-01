@@ -19,9 +19,21 @@ data/whisper_transcripts/
 data/transcripts_clean/
 data/transcripts_trimmed/
 data/transcripts_trimmed_no_padding/
+data/.superseded
 temp_corpus/
 *.zip
 config.json
+
+# Whisper Testing Data
+whisper_tests/audio_0ms/
+whisper_tests/audio_150ms/
+whisper_tests/audio_500ms/
+whisper_tests/audio_no_trim/
+whisper_tests/transcripts_*/
+
+
+.claude/
+
 
 # Distribution / packaging
 .Python
