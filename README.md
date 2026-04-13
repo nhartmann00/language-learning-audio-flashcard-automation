@@ -6,13 +6,6 @@ Automated pipeline to extract specific words and phrases from textbook dialogue 
 
 Language learning textbooks typically come with companion MP3 dialogue files containing native-speaker pronunciation — far higher quality than any TTS alternative. Adding precise audio clips to Anki flashcards significantly improves retention, but manually chopping audio files for hundreds of vocabulary cards is impractical. This tool automates the entire process, from raw audio to ready-to-study Anki cards with word-level precision.
 
-## The Solution
-
-This tool automates the process of:
-- Locating the specific phrases within full dialogue audio files using a CSV (from Excel or Anki).
-- Extracting clean audio clips for individual words/phrases.
-- Adding these clips to Anki cards for pronunciation practice.
-
 ## Pipeline
 
 The end-to-end pipeline is orchestrated by `main.py` and driven by `config.json`:
