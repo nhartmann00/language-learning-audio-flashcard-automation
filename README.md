@@ -2,20 +2,9 @@
 
 Automated pipeline to extract specific words and phrases from textbook dialogue audio files and integrate them into Anki flashcards for language learning.
 
-## Motivation
+## Background
 
-I have been looking into language learning and what effective methods are out there. The motivation for this project came from a language learning workflow approach highlighted by youtuber **languagejones** in the following [video](https://www.youtube.com/watch?v=QVpu66njzdE).
-
-The workflow is simple:
-- Get a hold of a textbook for your language at the appropriate level, and start reading it. Go through the dialogues, exercises and everything that it offers.
-- As you go through the textbook, write down any words or (small) phrases that you aren't yet familiar with and intend to memorize.
-- This collection of words and phrases will be used to create your Anki deck. To do it more efficiently, create an Excel spreadsheet to export as a CSV into Anki with the word and its translation.
-- Keep going through the textbook and use Anki to learn and memorize all the content of the book.
-- languagejones recommends adding audio and/or images to the cards to learn quicker.
-
-## The Problem
-
-Here is where the tool comes in. As most language learning textbooks, the French book I'm using (Assimil French for Beginners) comes with MP3 files for all the dialogue in the book, to listen alongside reading. These audio files contain natural, authentic and context-appropriate native level pronunciation and intonation; much better quality than any Text-to-Speech tools. I want to add this audio files to my Anki deck, but chopping files manually is a long and tedious process given the large amount of cards there are. It will make the actual language learning very inefficient.
+Language learning textbooks typically come with companion MP3 dialogue files containing native-speaker pronunciation — far higher quality than any TTS alternative. Adding precise audio clips to Anki flashcards significantly improves retention, but manually chopping audio files for hundreds of vocabulary cards is impractical. This tool automates the entire process, from raw audio to ready-to-study Anki cards with word-level precision.
 
 ## The Solution
 
