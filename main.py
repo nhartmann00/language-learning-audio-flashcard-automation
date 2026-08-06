@@ -19,6 +19,7 @@ Outputs:
 """
 
 import os
+import re
 import sys
 import json
 import csv
@@ -573,6 +574,17 @@ def update_anki(config, results):
         print(f"  Creating deck: {deck_name}")
         anki.create_deck(deck_name)
 
+    # Load all existing notes from the deck once — avoids per-card API calls
+    print("  Loading existing Anki notes...")
+    all_card_ids = anki.invoke('findNotes', query=f'deck:"{deck_name}"')
+    existing_notes = {}
+    if all_card_ids:
+        notes_info = anki.invoke('notesInfo', notes=all_card_ids)
+        for note in notes_info:
+            clean_front = re.sub(r'\[sound:[^\]]+\]', '', note['fields']['Front']['value']).strip()
+            existing_notes[clean_front] = note
+    print(f"  Found {len(existing_notes)} existing notes in deck\n")
+
     stats = {"created": 0, "updated": 0, "skipped": 0, "errors": 0}
 
     for i, r in enumerate(results, 1):
@@ -582,27 +594,33 @@ def update_anki(config, results):
 
         print(f"  [{i}/{len(results)}] {front}")
 
-        # Check if card already exists
-        existing = anki.find_cards_by_front(deck_name, front)
+        existing_note = existing_notes.get(front)
 
         try:
-            if not existing:
-                # Create new card
+            if not existing_note:
+                # New card — create it
                 anki.add_note(deck_name, front, back, clip_path)
                 stats["created"] += 1
                 print(f"    ✓ Card created" + (" (with audio)" if clip_path else " (no audio)"))
 
-            elif clip_path:
-                # Card exists — update with audio
-                card_info = anki.invoke("cardsInfo", cards=existing)[0]
-                note_id = card_info["note"]
-                anki.update_note_audio(note_id, clip_path)
-                stats["updated"] += 1
-                print(f"    ✓ Audio added to existing card")
-
             else:
-                stats["skipped"] += 1
-                print(f"    - Card exists, no audio to add")
+                note_id = existing_note['noteId']
+                front_value = existing_note['fields']['Front']['value']
+
+                if '[sound:' in front_value:
+                    # Already has audio — skip immediately
+                    stats["skipped"] += 1
+                    print(f"    - Already has audio, skipping")
+
+                elif clip_path:
+                    # Card exists, no audio yet — update
+                    anki.update_note_audio(note_id, clip_path)
+                    stats["updated"] += 1
+                    print(f"    ✓ Audio added to existing card")
+
+                else:
+                    stats["skipped"] += 1
+                    print(f"    - Card exists, no audio to add")
 
         except Exception as e:
             stats["errors"] += 1
