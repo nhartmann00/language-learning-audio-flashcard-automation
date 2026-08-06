@@ -1,0 +1,112 @@
+
+======================================================================
+SMALL_NO_TRIM — TOP 10 WORST LESSONS
+======================================================================
+  L002-LESSON          WER= 12.20%  S=  5 I=  0 D= 10  (ref=123 hyp=113)
+  L055-LESSON          WER= 11.08%  S= 13 I=  0 D= 23  (ref=325 hyp=302)
+  L054-LESSON          WER=  9.28%  S= 21 I=  2 D=  9  (ref=345 hyp=338)
+  L061-LESSON          WER=  8.98%  S= 34 I=  1 D=  1  (ref=401 hyp=401)
+  L069-LESSON          WER=  8.51%  S= 17 I=  1 D= 10  (ref=329 hyp=320)
+  L003-LESSON          WER=  7.96%  S=  7 I=  0 D=  2  (ref=113 hyp=111)
+  L036-LESSON          WER=  7.58%  S=  7 I=  1 D= 12  (ref=264 hyp=253)
+  L098-LESSON          WER=  6.88%  S= 12 I=  2 D=  1  (ref=218 hyp=219)
+  L009-LESSON          WER=  6.63%  S=  9 I=  2 D=  0  (ref=166 hyp=168)
+  L080-LESSON          WER=  6.53%  S= 23 I=  1 D=  1  (ref=383 hyp=383)
+
+======================================================================
+SMALL_0MS — TOP 10 WORST LESSONS
+======================================================================
+  L002-LESSON          WER= 12.20%  S=  5 I=  0 D= 10  (ref=123 hyp=113)
+  L055-LESSON          WER= 11.08%  S= 13 I=  0 D= 23  (ref=325 hyp=302)
+  L054-LESSON          WER=  9.28%  S= 21 I=  2 D=  9  (ref=345 hyp=338)
+  L061-LESSON          WER=  9.23%  S= 35 I=  1 D=  1  (ref=401 hyp=401)
+  L093-LESSON          WER=  8.64%  S= 23 I= 13 D=  2  (ref=440 hyp=451)
+  L069-LESSON          WER=  8.51%  S= 17 I=  1 D= 10  (ref=329 hyp=320)
+  L096-LESSON          WER=  8.00%  S= 13 I= 11 D= 12  (ref=450 hyp=449)
+  L003-LESSON          WER=  7.96%  S=  7 I=  0 D=  2  (ref=113 hyp=111)
+  L036-LESSON          WER=  7.58%  S=  7 I=  1 D= 12  (ref=264 hyp=253)
+  L098-LESSON          WER=  6.88%  S= 12 I=  2 D=  1  (ref=218 hyp=219)
+
+======================================================================
+SMALL_150MS — TOP 10 WORST LESSONS
+======================================================================
+  L002-LESSON          WER= 12.20%  S=  5 I=  0 D= 10  (ref=123 hyp=113)
+  L055-LESSON          WER= 11.08%  S= 13 I=  0 D= 23  (ref=325 hyp=302)
+  L054-LESSON          WER=  9.28%  S= 21 I=  2 D=  9  (ref=345 hyp=338)
+  L061-LESSON          WER=  9.23%  S= 35 I=  1 D=  1  (ref=401 hyp=401)
+  L069-LESSON          WER=  8.51%  S= 17 I=  1 D= 10  (ref=329 hyp=320)
+  L036-LESSON          WER=  7.58%  S=  7 I=  1 D= 12  (ref=264 hyp=253)
+  L003-LESSON          WER=  7.08%  S=  6 I=  0 D=  2  (ref=113 hyp=111)
+  L098-LESSON          WER=  6.88%  S= 12 I=  2 D=  1  (ref=218 hyp=219)
+  L009-LESSON          WER=  6.63%  S=  9 I=  2 D=  0  (ref=166 hyp=168)
+  L039-LESSON          WER=  6.60%  S=  5 I=  0 D= 15  (ref=303 hyp=288)
+
+======================================================================
+SMALL_500MS — TOP 10 WORST LESSONS
+======================================================================
+  L002-LESSON          WER= 12.20%  S=  5 I=  0 D= 10  (ref=123 hyp=113)
+  L055-LESSON          WER= 11.38%  S= 14 I=  0 D= 23  (ref=325 hyp=302)
+  L054-LESSON          WER=  9.28%  S= 21 I=  2 D=  9  (ref=345 hyp=338)
+  L061-LESSON          WER=  8.98%  S= 34 I=  1 D=  1  (ref=401 hyp=401)
+  L069-LESSON          WER=  8.51%  S= 17 I=  1 D= 10  (ref=329 hyp=320)
+  L036-LESSON          WER=  7.58%  S=  7 I=  1 D= 12  (ref=264 hyp=253)
+  L003-LESSON          WER=  7.08%  S=  6 I=  0 D=  2  (ref=113 hyp=111)
+  L098-LESSON          WER=  6.88%  S= 12 I=  2 D=  1  (ref=218 hyp=219)
+  L009-LESSON          WER=  6.63%  S=  9 I=  2 D=  0  (ref=166 hyp=168)
+  L039-LESSON          WER=  6.60%  S=  5 I=  0 D= 15  (ref=303 hyp=288)
+
+======================================================================
+MEDIUM_NO_TRIM — TOP 10 WORST LESSONS
+======================================================================
+  L033-LESSON          WER= 28.69%  S=  2 I=  0 D= 70  (ref=251 hyp=181)
+  L008-LESSON          WER= 17.02%  S=  7 I=  0 D= 25  (ref=188 hyp=163)
+  L003-LESSON          WER= 15.04%  S=  3 I=  8 D=  6  (ref=113 hyp=115)
+  L006-LESSON          WER= 11.59%  S=  6 I=  0 D= 13  (ref=164 hyp=151)
+  L054-LESSON          WER=  8.99%  S= 21 I=  2 D=  8  (ref=345 hyp=339)
+  L017-LESSON          WER=  8.28%  S=  4 I=  0 D= 10  (ref=169 hyp=159)
+  L042-LESSON          WER=  7.33%  S=  2 I=  0 D=  9  (ref=150 hyp=141)
+  L061-LESSON          WER=  6.98%  S= 24 I=  1 D=  3  (ref=401 hyp=399)
+  L092-LESSON          WER=  6.72%  S= 18 I=  2 D= 14  (ref=506 hyp=494)
+  L067-LESSON          WER=  5.17%  S= 15 I=  1 D=  4  (ref=387 hyp=384)
+
+======================================================================
+MEDIUM_0MS — TOP 10 WORST LESSONS
+======================================================================
+  L033-LESSON          WER= 28.69%  S=  2 I=  0 D= 70  (ref=251 hyp=181)
+  L003-LESSON          WER= 15.04%  S=  3 I=  8 D=  6  (ref=113 hyp=115)
+  L006-LESSON          WER= 11.59%  S=  6 I=  0 D= 13  (ref=164 hyp=151)
+  L054-LESSON          WER=  8.99%  S= 21 I=  2 D=  8  (ref=345 hyp=339)
+  L017-LESSON          WER=  8.28%  S=  4 I=  0 D= 10  (ref=169 hyp=159)
+  L061-LESSON          WER=  6.98%  S= 24 I=  1 D=  3  (ref=401 hyp=399)
+  L092-LESSON          WER=  6.72%  S= 18 I=  2 D= 14  (ref=506 hyp=494)
+  L042-LESSON          WER=  6.00%  S=  1 I=  0 D=  8  (ref=150 hyp=142)
+  L008-LESSON          WER=  5.32%  S=  7 I=  0 D=  3  (ref=188 hyp=185)
+  L067-LESSON          WER=  5.17%  S= 15 I=  1 D=  4  (ref=387 hyp=384)
+
+======================================================================
+MEDIUM_150MS — TOP 10 WORST LESSONS
+======================================================================
+  L033-LESSON          WER= 28.69%  S=  2 I=  0 D= 70  (ref=251 hyp=181)
+  L006-LESSON          WER= 23.78%  S= 30 I=  9 D=  0  (ref=164 hyp=173)
+  L008-LESSON          WER= 17.02%  S=  7 I=  0 D= 25  (ref=188 hyp=163)
+  L003-LESSON          WER= 15.04%  S=  3 I=  8 D=  6  (ref=113 hyp=115)
+  L054-LESSON          WER=  8.99%  S= 21 I=  2 D=  8  (ref=345 hyp=339)
+  L017-LESSON          WER=  8.28%  S=  4 I=  0 D= 10  (ref=169 hyp=159)
+  L042-LESSON          WER=  7.33%  S=  4 I=  0 D=  7  (ref=150 hyp=143)
+  L061-LESSON          WER=  6.98%  S= 24 I=  1 D=  3  (ref=401 hyp=399)
+  L092-LESSON          WER=  6.72%  S= 18 I=  2 D= 14  (ref=506 hyp=494)
+  L067-LESSON          WER=  5.17%  S= 15 I=  1 D=  4  (ref=387 hyp=384)
+
+======================================================================
+MEDIUM_500MS — TOP 10 WORST LESSONS
+======================================================================
+  L033-LESSON          WER= 28.69%  S=  2 I=  0 D= 70  (ref=251 hyp=181)
+  L003-LESSON          WER= 15.04%  S=  3 I=  8 D=  6  (ref=113 hyp=115)
+  L006-LESSON          WER= 12.20%  S=  7 I=  0 D= 13  (ref=164 hyp=151)
+  L054-LESSON          WER=  8.99%  S= 21 I=  2 D=  8  (ref=345 hyp=339)
+  L017-LESSON          WER=  8.28%  S=  4 I=  0 D= 10  (ref=169 hyp=159)
+  L061-LESSON          WER=  6.98%  S= 24 I=  1 D=  3  (ref=401 hyp=399)
+  L008-LESSON          WER=  6.91%  S= 10 I=  0 D=  3  (ref=188 hyp=185)
+  L092-LESSON          WER=  6.72%  S= 18 I=  2 D= 14  (ref=506 hyp=494)
+  L042-LESSON          WER=  6.00%  S=  1 I=  0 D=  8  (ref=150 hyp=142)
+  L067-LESSON          WER=  5.17%  S= 15 I=  1 D=  4  (ref=387 hyp=384)

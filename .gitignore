@@ -244,3 +244,4 @@ data/transcripts_manual/
 # WER analysis outputs (contain verbatim source text)
 whisper_tests/wer_results/diffs/
 whisper_tests/wer_results/all_errors.csv
+whisper_tests/wer_results/*.xlsx
