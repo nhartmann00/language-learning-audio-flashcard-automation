@@ -31,13 +31,15 @@ This tool automates the process of:
 The end-to-end pipeline is orchestrated by `main.py` and driven by `config.json`:
 
 1. **MP3 → WAV Conversion** — Converts raw audio files to WAV format for processing.
-2. **Silence Trimming** — Removes trailing silence from audio files to prevent Whisper hallucinations (150ms safety window preserved).
+2. **Silence Trimming** — Trims trailing silence, retaining a 150ms tail. End-only; head trimming causes transcription drift in the opening words.
 3. **Whisper Transcription** — Generates French transcripts using OpenAI's Whisper (`small` model).
 4. **Transcript Cleaning** — Normalizes text for MFA compatibility (numbers → French words, abbreviation expansion, punctuation stripping).
 5. **MFA Forced Alignment** — Aligns transcripts to audio at the word level using Montreal Forced Aligner, producing TextGrid files.
 6. **TextGrid Parsing** — Extracts word-level timestamps from MFA output.
 7. **Audio Extraction** — Cuts precise audio clips for each target word/phrase based on timestamps.
 8. **Anki Integration** — Creates or updates Anki flashcards with extracted audio clips via AnkiConnect.
+
+The `small` model and 150ms tail were selected by measuring word error rate for eight model/trim combinations across all 100 lessons against hand-verified ground truth. Methodology, results and reasoning are in [`whisper_tests/README.md`](whisper_tests/README.md).
 
 ## Features
 
@@ -51,6 +53,7 @@ The end-to-end pipeline is orchestrated by `main.py` and driven by `config.json`
 - [x] Programmatically create/update Anki decks with audio clips via AnkiConnect
 - [x] Batch processing for 100 dialogue files
 - [x] Config-driven pipeline (`config.json`)
+- [x] WER evaluation harness for ASR configuration selection
 
 ## Tech Stack
 
@@ -59,26 +62,37 @@ The end-to-end pipeline is orchestrated by `main.py` and driven by `config.json`
 - **Montreal Forced Aligner** — Audio-text alignment. Industry standard with support for French and many other languages.
 - **pydub** — Audio processing and segmentation. Pythonic audio manipulation (built on ffmpeg).
 - **AnkiConnect** — Anki integration API. Creates and updates flashcards programmatically.
+- **jiwer** — Word error rate computation for the ASR configuration comparison.
 
 ## Project Structure
 
 ```
 language-learning-audio-flashcard-automation/
-├── main.py                    # End-to-end pipeline orchestrator
-├── config.json                # Pipeline configuration (paths, model, deck name)
+├── main.py                       # End-to-end pipeline orchestrator
 ├── src/
-│   ├── audio_converter.py     # MP3→WAV conversion + silence trimming
-│   ├── transcriber.py         # Whisper transcription
-│   ├── transcript_cleaner.py  # Text normalization for MFA
-│   ├── textgrid_parser.py     # MFA TextGrid parsing + phrase lookup
-│   ├── audio_extractor.py     # Audio clip extraction by timestamp
-│   └── anki_integrator.py     # AnkiConnect API integration
+│   ├── __init__.py
+│   ├── audio_converter.py        # MP3→WAV conversion + silence trimming
+│   ├── transcriber.py            # Whisper transcription
+│   ├── transcript_cleaner.py     # Text normalization for MFA
+│   ├── textgrid_parser.py        # MFA TextGrid parsing + phrase lookup
+│   ├── audio_extractor.py        # Audio clip extraction by timestamp
+│   └── anki_integrator.py        # AnkiConnect API integration
 ├── whisper_tests/
-│   └── run_whisper_tests.py   # Config comparison tool (8 configs × 100 lessons)
-├── data/                      # Audio files, transcripts, TextGrids (gitignored)
+│   ├── README.md                 # ASR config testing methodology and results
+│   ├── batch_clean_all.py        # Normalize transcript sets before scoring
+│   ├── wer_analysis.py           # Per-lesson and per-config WER against ground truth
+│   ├── wer_diff_report.py        # Error-type breakdowns by config
+│   └── wer_results/
+│       ├── aggregate.csv         # One row per config
+│       ├── summary.csv           # One row per lesson, all eight configs
+│       └── worst_lessons.txt     # Top 10 worst lessons per config
+├── data/                         # Audio files, transcripts, TextGrids (gitignored)
 ├── requirements.txt
+├── LICENSE
 └── README.md
 ```
+
+`config.json` is not tracked — it holds local paths and your deck name. Running `python main.py` with no config present writes a template and exits so you can fill it in.
 
 ## Project Status
 
@@ -86,33 +100,32 @@ language-learning-audio-flashcard-automation/
 
 ## Setup
 
-1. **Install dependencies:**
+1. **Install ffmpeg** — required by pydub for audio decoding, and by Whisper. It must be on your `PATH`.
+
+2. **Install Python dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
 
-2. **Install Montreal Forced Aligner** (separate install):
+3. **Install Montreal Forced Aligner** (separate install, conda only):
    ```bash
    conda install -c conda-forge montreal-forced-aligner
    mfa model download acoustic french_mfa
    mfa model download dictionary french_mfa
    ```
 
-3. **Install Whisper:**
-   ```bash
-   pip install openai-whisper
-   ```
-
 4. **Set up AnkiConnect:**
    - Install the [AnkiConnect](https://ankiweb.net/shared/info/2055492159) add-on in Anki.
    - Ensure Anki is running when executing the pipeline.
 
-5. **Configure `config.json`** with your paths, deck name, and CSV location.
+5. **Configure `config.json`** with your paths, deck name, and CSV location. Run the pipeline once to generate the template.
 
 6. **Run the pipeline:**
    ```bash
    python main.py
    ```
+
+Each stage skips work that has already been done — existing WAVs, transcripts, TextGrids, clips and cards with audio attached are all detected and passed over, so reruns are cheap and targeted re-processing is a matter of deleting the specific outputs you want rebuilt.
 
 ## Future Enhancements
 
