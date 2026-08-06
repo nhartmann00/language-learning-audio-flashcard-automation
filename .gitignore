@@ -234,8 +234,13 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
-"ASSIMIL French Anki.csv" 
-"ASSIMIL French Anki.csv" 
-".claude/worktrees/" 
-"data/.superseded/" 
-".claude/" 
+
+# Deck source data
+ASSIMIL French Anki.csv
+
+# Ground truth transcripts (verbatim copyrighted Assimil text)
+data/transcripts_manual/
+
+# WER analysis outputs (contain verbatim source text)
+whisper_tests/wer_results/diffs/
+whisper_tests/wer_results/all_errors.csv
